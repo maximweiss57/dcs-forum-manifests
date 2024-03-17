@@ -1,0 +1,17 @@
+# Default values for app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+app:
+  replicaCount: 1
+  image:
+    name: 
+    tag: latest
+
+# DB Settings
+db:
+  mysqlreplicaCount: 1
+  password: root
+  host: mysql
+  db_name: db
+  root_password: root
