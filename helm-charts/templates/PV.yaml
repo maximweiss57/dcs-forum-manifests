@@ -1,0 +1,15 @@
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: {{ include "postgresql.fullname" . }}-data
+  labels:
+    {{- include "postgresql.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.persistence.size }}
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/{{ include "postgresql.fullname" . }}-data
+{{- end }}

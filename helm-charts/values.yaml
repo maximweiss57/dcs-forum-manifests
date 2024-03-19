@@ -9,9 +9,23 @@ app:
     tag: latest
 
 # DB Settings
-db:
-  mysqlreplicaCount: 1
+replicaCount: 1
+
+image:
+  repository: postgres
+  pullPolicy: IfNotPresent
+  tag: 14.1.0
+
+service:
+  type: ClusterIP
+  port: 5432
+
+persistence:
+  enabled: true
+  size: 8Gi
+
+postgresql:
+  username: postgres
   password: root
-  host: mysql
-  db_name: db
-  root_password: root
+  database: forum
+  host: db
